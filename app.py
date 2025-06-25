@@ -3,16 +3,17 @@ from flask import Flask, render_template
 import os
 from dotenv import load_dotenv
 
-from kinde_sdk.auth.oauth import OAuth
+from kinde_sdk import OAuth
 
 load_dotenv()
 
 app = Flask(__name__)
 
-kinde_oauth = OAuth(
-    framework="flask",
-    app=app
-)
+app.config['SECRET_KEY'] = 'your-secret-key'
+app.config['SESSION_TYPE'] = 'filesystem'
+app.config['SESSION_PERMANENT'] = False
+
+kinde_oauth = OAuth(framework="flask", app=app)
 
 def get_authorized_data(kinde_oauth):
     user = kinde_oauth.get_user_info()
