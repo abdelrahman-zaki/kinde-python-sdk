@@ -1,4 +1,4 @@
 flask
 flask-session
 python-dotenv
-kinde-python-sdk==2.0.0b17
+kinde-python-sdk==2.0.0b18
